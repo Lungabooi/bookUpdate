@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     try {
-        con.query(`SELECT * FROM users WHERE user_id =${req.params.id}`, (err, result) => {
+        con.query(`SELECT * FROM users WHERE user_id ="${req.params.id}"`, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
@@ -41,7 +41,7 @@ router.put("/:id", (req, res) => {
       user_type,
     } = req.body;
     try {
-        con.query(`UPDATE users SET full_name='${full_name}', email='${email}', password ='${password}', phone_number='${phone_number}', join_date='${join_date}', user_type='${user_type}'   WHERE user_id =${req.params.id}`, (err, result) => {
+        con.query(`UPDATE users SET full_name='${full_name}', email='${email}', password ='${password}', phone_number='${phone_number}', join_date='${join_date}', user_type='${user_type}'   WHERE user_id ="${req.params.id}"`, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
@@ -55,7 +55,7 @@ router.put("/:id", (req, res) => {
   // Delete a single user from the database
 router.delete("/:id", (req, res) => {
     try {
-        con.query(`DELETE  FROM users WHERE user_id =${req.params.id}`, (err, result) => {
+        con.query(`DELETE  FROM users WHERE user_id ="${req.params.id}"`, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
