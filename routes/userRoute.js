@@ -113,7 +113,6 @@ router.post("/register", (req, res) => {
     }
   });
   
-  const jwt = require('jsonwebtoken');
   // Login
   router.post("/login", (req, res) => {
     try {
