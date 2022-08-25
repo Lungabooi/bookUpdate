@@ -69,7 +69,7 @@ router.delete("/:id", (req, res) => {
   });
   
 
-  const bcrypt = require('bcryptjs');
+
   // Register Route
 // The Route where Encryption starts
 router.post("/register", (req, res) => {
