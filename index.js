@@ -5,7 +5,7 @@ const app = express(); // Initialize express as an app variable
 app.set("port", process.env.PORT || 8001); // Set the port
 app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors({
-    origin: "http://192.168.9.39:8080/",
+    origin: "http://localhost:8080",
 })
 ); // Dont let local development give errors
 
