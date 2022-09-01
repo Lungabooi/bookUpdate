@@ -4,10 +4,7 @@ const cors = require("cors"); // Used to prevent errors when working locally
 const app = express(); // Initialize express as an app variable
 app.set("port", process.env.PORT || 8001); // Set the port
 app.use(express.json()); // Enable the server to handle JSON requests
-app.use(cors({
-    origin: "http://localhost:8080",
-})
-);
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', '*');
