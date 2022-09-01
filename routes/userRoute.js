@@ -106,7 +106,8 @@ router.post("/register", (req, res) => {
       con.query(sql, user, (err, result) => {
         if (err) throw err;
         console.log(result);
-        res.send(`User ${(user.email, user.password)} created successfully`);
+        // res.send(`User ${user.full_name,user.email} created successfully`);
+        res.send(user)
       });
     } catch (error) {
       console.log(error);
@@ -133,22 +134,21 @@ router.post("/register", (req, res) => {
             res.send("Password incorrect");
           } else {
             // The information the should be stored inside token
-            const payload = {
-              user: {
+            
+            const  user ={
                 user_id: result[0].user_id,
-                email: result[0].user_email,
-                full_name: result[0].user_full_name,
-                password: result[0].user_password,
-                phone_number: result[0].user_phone_number,
+                email: result[0].email,
+                full_name: result[0].full_name,
+                password: result[0].password,
+                phone_number: result[0].phone_number,
                 join_date: result[0].join_date,
                 cart: result[0].cart,
                 product_Id: result[0].product_Id,
                 user_type: result[0].user_type,
-              },
-            };
+              }
             // Creating a token and setting expiry date
             jwt.sign(
-              payload,
+            user,
               process.env.jwtSecret,
               {
                 expiresIn: "365d",
