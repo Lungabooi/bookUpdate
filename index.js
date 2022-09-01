@@ -7,7 +7,14 @@ app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors({
     origin: "http://localhost:8080",
 })
-); // Dont let local development give errors
+);
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+  }); // Dont let local development give errors
 
 // Import routes
 
