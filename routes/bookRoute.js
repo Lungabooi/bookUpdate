@@ -63,7 +63,28 @@ router.delete("/:id", (req, res) => {
     }
   });
 
-  
+  router.post("/:id", (req, res) => {
+    const book = {
+      title:req.body.title,
+      author:req.body.author,
+      publisher:req.body.publisher,
+      category:req.body.category,
+      quantity:req.body.category,
+      user_id:req.body.user_id,
+      price:req.body.price,
+      imgURL:req.body.imgURL,
+    } 
+    try {
+        con.query(`INSERT INTO books ?  WHERE user_id =${req.params.id}`,book, (err, result) => {
+            if (err) throw err;
+            res.send(result);
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send(error)
+    }
+  });
+
 
 
 module.exports = router;
