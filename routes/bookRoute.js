@@ -70,7 +70,7 @@ router.delete("/:id", (req, res) => {
       publisher:req.body.publisher,
       category:req.body.category,
       quantity:req.body.category,
-      user_id:req.body.user_id,
+      user_id:req.body.user_Id,
       price:req.body.price,
       imgURL:req.body.imgURL,
     } 
