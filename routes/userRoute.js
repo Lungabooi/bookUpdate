@@ -136,7 +136,7 @@ router.post("/register", (req, res) => {
             // The information the should be stored inside token
             
             const  user ={
-                user_id: result[0].user_Id,
+                user_Id: result[0].user_Id,
                 email: result[0].email,
                 full_name: result[0].full_name,
                 password: result[0].password,
