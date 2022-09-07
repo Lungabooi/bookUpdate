@@ -63,7 +63,7 @@ router.delete("/:id", (req, res) => {
     }
   });
 
-  router.post("/:id", (req, res) => {
+  router.post("/", (req, res) => {
     const book = {
       title:req.body.title,
       author:req.body.author,
@@ -74,7 +74,7 @@ router.delete("/:id", (req, res) => {
       imgURL:req.body.imgURL,
     } 
     try {
-        con.query(`INSERT INTO books SET ?  WHERE "user_id" = "${req.params.id}"`,book, (err, result) => {
+        con.query(`INSERT INTO books SET ?"`,book, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
