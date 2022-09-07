@@ -79,7 +79,7 @@ router.put("/:id", (req, res) => {
   // Delete a single user from the database
 router.delete("/:id", (req, res) => {
     try {
-        con.query(`DELETE  FROM users WHERE user_id ="${req.params.id}"`, (err, result) => {
+        con.query(`DELETE  FROM users WHERE user_Id ="${req.params.id}"`, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
