@@ -3,6 +3,7 @@ const router = express.Router();
 const con = require("../lib/db_connection");
 
 router.get("/", (req, res) => {
+    if (req.user_type == "admin"){
     try {
         con.query("SELECT * FROM books", (err, result) => {
             if (err) throw err;
@@ -12,6 +13,9 @@ router.get("/", (req, res) => {
         console.log(error);
         res.status(400).send(error)
     }
+} else {
+    res.send("Access Denied")
+};
 });
 
 
@@ -29,6 +33,7 @@ router.get("/:id", (req, res) => {
 
 
 router.delete("/:id", (req, res) => {
+    if (req.user_type == "admin"){
     try {
         con.query(`DELETE  FROM books WHERE book_id =${req.params.id}`, (err, result) => {
             if (err) throw err;
@@ -37,6 +42,9 @@ router.delete("/:id", (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(400).send(error)
+    }}
+    else{
+        res.send("Access Denied")
     }
   });
 
