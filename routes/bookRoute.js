@@ -40,7 +40,7 @@ router.delete("/:id", (req, res) => {
         res.status(400).send(error)
     }
 } else {
-    res.alert("Access Denied Not Admin")
+    res.send("Access Denied Not Admin")
 };
   });
 
