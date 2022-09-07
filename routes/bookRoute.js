@@ -29,7 +29,7 @@ router.get("/:id", (req, res) => {
 
 
 router.delete("/:id", (req, res) => {
-    if (req.user_type == "admin"){
+    if (req.user.user_type == "admin"){
     try {
         con.query(`DELETE  FROM books WHERE book_id =${req.params.id}`, (err, result) => {
             if (err) throw err;
