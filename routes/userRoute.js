@@ -18,6 +18,27 @@ router.get("/", (req, res) => {
     }
 });
 
+//Add to users
+router.post("/", (req, res) => {
+  const user = {
+    full_name:req.body.full_name,
+    email:req.body.email,
+    phone_number:req.body.phone_number,
+    password:req.body.password,
+    join_date:req.body.join_date,
+    user_type:req.body.user_type,
+  } 
+  try {
+      con.query(`INSERT INTO users SET ?`,user, (err, result) => {
+          if (err) throw err;
+          res.send(result);
+      });
+  } catch (error) {
+      console.log(error);
+      res.status(400).send(error)
+  }
+});
+
 
 //Getting a single user by Id from Users table.
 
