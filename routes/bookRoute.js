@@ -74,7 +74,7 @@ router.delete("/:id", (req, res) => {
       imgURL:req.body.imgURL,
     } 
     try {
-        con.query(`INSERT INTO books SET ?"`,book, (err, result) => {
+        con.query(`INSERT INTO books SET ?`,book, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
