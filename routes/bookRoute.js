@@ -29,7 +29,7 @@ router.get("/:id", (req, res) => {
 
 
 router.delete("/:id", (req, res) => {
-    if (req.user.user_type == "admin"){
+
     try {
         con.query(`DELETE  FROM books WHERE book_id =${req.params.id}`, (err, result) => {
             if (err) throw err;
@@ -39,10 +39,7 @@ router.delete("/:id", (req, res) => {
         console.log(error);
         res.status(400).send(error)
     }
-} else {
-    res.send("Access Denied Not Admin")
-};
-  });
+});
 
   router.put("/:id", (req, res) => {
     const {
