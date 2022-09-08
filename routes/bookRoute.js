@@ -41,6 +41,7 @@ router.delete("/:id", (req, res) => {
     }
 });
 
+//Update my books by id
   router.put("/:id", (req, res) => {
     const {
       book_id,
@@ -49,12 +50,11 @@ router.delete("/:id", (req, res) => {
       publisher,
       category,
       quantity,
-      user_id,
       price,
       imgURL,
     } = req.body;
     try {
-        con.query(`UPDATE books SET book_id='${book_id}', title='${title}', author ='${author}', publisher='${publisher}', category='${category}', quantity='${quantity}', user_id='${user_id}' , price='${price}', imgURL='${imgURL}'  WHERE user_id =${req.params.id}`, (err, result) => {
+        con.query(`UPDATE books SET book_id='${book_id}', title='${title}', author ='${author}', publisher='${publisher}', category='${category}', quantity='${quantity}' , price='${price}', imgURL='${imgURL}'  WHERE book_id =${req.params.id}`, (err, result) => {
             if (err) throw err;
             res.send(result);
         });
