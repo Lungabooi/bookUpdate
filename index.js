@@ -13,11 +13,7 @@ app.use((req, res, next) => {
     next();
   }); // Dont let local development give errors
 
-// Creating env file
 
-
-
-// Import routes
 
 app.get("/", (req, res) => {
     res.json({ msg: "The server is running by Lunga Booi !!" });
